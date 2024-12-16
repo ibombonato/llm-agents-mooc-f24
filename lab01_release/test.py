@@ -34,17 +34,17 @@ def public_tests():
     contents = []
     
     for query in queries:
-        with open("runtime-log.txt", "w") as f:
+        with open(f"runtime-log.txt", "w") as f:
             sys.stdout = f
             main(query)
-        with open("runtime-log.txt", "r") as f:
+        with open(f"runtime-log.txt", "r") as f:
             contents.append(f.read())
             
     restore_prints()
     num_passed = 0
     for i, content in enumerate(contents):
         if not contains_num_with_tolerance(content, query_results[i], tolerance=tolerances[i]):
-            print(TerminalColors.RED + f"Test {i+1} Failed." + TerminalColors.RESET, "Expected: ", query_results[i], "Query: ", queries[i])
+            print(TerminalColors.RED + f"Test {i+1} Failed." + TerminalColors.RESET, "Expected: ", query_results[i], "Query: ", queries[i], "\nResult:", content)
         else:
             print(TerminalColors.GREEN + f"Test {i+1} Passed." + TerminalColors.RESET, "Expected: ", query_results[i], "Query: ", queries[i])
             num_passed += 1
