@@ -19,6 +19,33 @@ We structured our virtual team with five key roles:
 * A Judge to handle disagreements
 * An Analyst to synthesize findings and suggest improvements
 
+```mermaid
+graph TB
+    CS["1: Customer Service Interaction<br/>Input for QA Review"]
+    M["2: Manager<br/>Initiates review process"]
+    QM["3: Quality Monitor<br/>Reviews & flags issues"]
+    O["4: Operator<br/>Provides context & explanations"]
+    J["5: Judge<br/>Resolves disagreements"]
+    A["6: Analyst<br/>Analyzes findings"]
+    R["7: Recommendations<br/>Improvement report"]
+
+    CS --> M
+    M --> QM
+    QM --> O
+    O --> |"Issues found"| J
+    O --> |"No issues"| A
+    J --> A
+    A --> R
+
+    style CS fill:#ffd6d6,stroke:#333,stroke-width:2px,color:#333
+    style M fill:#ffe87c,stroke:#333,stroke-width:2px,color:#333
+    style QM fill:#a8d1ff,stroke:#333,stroke-width:2px,color:#333
+    style O fill:#a8d1ff,stroke:#333,stroke-width:2px,color:#333
+    style J fill:#a8d1ff,stroke:#333,stroke-width:2px,color:#333
+    style A fill:#b7e1b7,stroke:#333,stroke-width:2px,color:#333
+    style R fill:#b7e1b7,stroke:#333,stroke-width:2px,color:#333
+```
+
 ## How It Actually Works
 
 The most interesting part of this project wasn't the technical implementation - it was figuring out how to mirror the back-and-forth of real quality assurance discussions. 
