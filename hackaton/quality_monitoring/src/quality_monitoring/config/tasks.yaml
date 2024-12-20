@@ -1,0 +1,96 @@
+monitor_task:
+  description: >
+    Carefully analyze the customer service transcript using the provided service guidelines. 
+    Systematically evaluate each interaction against the established standards.
+    Identify specific areas where the service deviated from best practices.
+    Prepare a detailed, objective report highlighting potential issues, 
+    including direct evidence from the transcript to support each observation.
+    Make sure you have the guideline and the transcription. You can NOT do your work with both of them.
+  expected_output: >
+    A comprehensive quality assessment report containing:
+    - List of specific guideline violations
+    - Detailed explanation of each identified issue
+    - Direct quotes supporting the assessment
+    - Clear, actionable improvement recommendations
+  agent: monitor
+
+operator_task:
+  description: >
+    Review the Monitor's quality assessment report in detail. 
+    Carefully examine each point raised against the full context of the service transcript.
+    Provide a thoughtful, professional response that either:
+    - Acknowledges the identified issues and explains mitigation strategies
+    - Offers a well-reasoned defense with contextual explanations
+    - Provide additional context that may modify the initial assessment
+    Make sure you have the guideline and the transcription. You can NOT do your work with both of them.
+  expected_output: >
+    A structured response document including:
+    - Point-by-point response to the Monitor's findings
+    - Contextual explanations or defenses
+    - Supporting evidence from the original transcript
+    - Proposed action steps or clarifications
+  agent: operator
+
+judge_task:
+  description: >
+    In the event of a disagreement between the Monitor and Operator, 
+    conduct a thorough, impartial review of:
+    - The original service transcript
+    - Monitor's quality assessment report
+    - Operator's response and defense
+    
+    Analyze the evidence objectively, considering:
+    - Alignment with service guidelines
+    - Context of the customer interaction
+    - Reasonableness of both perspectives
+
+    Make sure you have the guideline and the transcription. You can NOT do your work with both of them.
+  expected_output: >
+    A definitive assessment document containing:
+    - Clear determination of the dispute
+    - Detailed reasoning behind the decision
+    - Supporting evidence from the transcript
+    - Objective rationale for the judgment
+  agent: judge
+
+supervisor_task:
+  description: >
+    You was provided with a transcript and a guideline off a customer service interaction
+
+    ###transcript:
+    {transcript}
+
+    ###guidelines:
+    {guidelines}
+
+    ###task:
+    Based on the transcription and guidelines of the customer service provided compile a comprehensive, constructive feedback report based on:
+    - Monitor's initial quality assessment
+    - Operator's response
+    - Judge's decision (if applicable)
+    
+    Create a professional, actionable document that:
+    - Provides clear, balanced insights
+    - Highlights both strengths and areas for improvement
+    - Offers specific, constructive recommendations
+    - Maintains a supportive, development-focused tone
+    
+    Make sure you passed the guideline and the transcription when necessary, otherwise, workers can NOT do their work with both of them.
+  expected_output: >
+    A markdown-formatted feedback report including:
+    - Executive summary of the assessment
+    - Detailed findings from each stage of the review
+    - Specific, actionable improvement recommendations
+    - Positive acknowledgments of good performance
+    - Clear, professional language
+  agent: supervisor
+
+
+reporting_task:
+  description: >
+    Review the context you got and expand each topic into a full section for a report.
+    Make sure the report is detailed and contains any and all relevant information.
+  expected_output: >
+    A fully fledge reports with the mains topics, each with a full section of information.
+    Formatted as markdown without '```'
+  agent: reporting_analyst
