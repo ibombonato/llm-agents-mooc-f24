@@ -1,0 +1,20 @@
+[project]
+name = "quality_monitoring"
+version = "0.1.0"
+description = "quality-monitoring using crewAI"
+authors = [{ name = "Your Name", email = "you@example.com" }]
+requires-python = ">=3.10,<=3.11"
+dependencies = [
+    "crewai[tools]>=0.86.0,<1.0.0"
+]
+
+[project.scripts]
+quality_monitoring = "quality_monitoring.main:run"
+run_crew = "quality_monitoring.main:run"
+train = "quality_monitoring.main:train"
+replay = "quality_monitoring.main:replay"
+test = "quality_monitoring.main:test"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
