@@ -1,6 +1,9 @@
 # How We Built a Better Way to Evaluate Customer Service: Our CrewAI Hackathon Project
 
-During a recent hackathon, my team tackled a challenge that's been bugging me for years - how to effectively evaluate customer service at scale. Here's what we built and what I learned along the way.
+During a recent hackathon, my team tackled a challenge that's been bugging me for years - how to effectively evaluate customer service at scale. Here's what we built and what I learned along the way. (Click on this link if you want to check how to run the project on your machine -> [User Guide](https://github.com/ibombonato/llm-agents-mooc-f24/blob/main/hackaton/quality_monitoring/README.md))
+- Checkout the [Medium Article](https://medium.com/@gabrielblins/how-we-built-a-smarter-way-to-evaluate-customer-service-inside-our-crewai-hackathon-project-2544cd60eb6b)
+- Checkout the [YouTube video](https://youtu.be/odAPNUa02GQ)
+- Checkout the [LLM Agents MOOC](https://llmagents-learning.org/f24)
 
 ## The Customer Service Quality Problem 
 
