@@ -1,9 +1,24 @@
 from crewai import Agent, Crew, Process, Task
 from crewai.project import CrewBase, agent, crew, task
+from pydantic import BaseModel
+from typing import List
 
 # If you want to run a snippet of code before or after the crew starts, 
 # you can use the @before_kickoff and @after_kickoff decorators
 # https://docs.crewai.com/concepts/crews#example-crew-class-with-decorators
+
+class QualityModel(BaseModel):
+	guideline: str
+	compliance: bool
+	evidence: str
+
+class QualityModel(BaseModel):
+	quality_checks: List[QualityModel]
+
+class ConversationAnalysisModel(BaseModel):
+	transcript: str
+	guidelines: List[str]
+
 
 @CrewBase
 class QualityMonitoring():
@@ -25,6 +40,7 @@ class QualityMonitoring():
 			#llm=self.llm,
 			verbose=True,
 			#allow_delegation=False
+			memory=True
 		)
 
 	@agent
@@ -76,6 +92,8 @@ class QualityMonitoring():
 		return Task(
 			config=self.tasks_config['monitor_task'],
 			#agent=self.monitor()
+			input_model=ConversationAnalysisModel,
+			output_model=QualityModel
 		)
 
 	@task
@@ -85,6 +103,8 @@ class QualityMonitoring():
 			config=self.tasks_config['operator_task'],
 			#agent=self.operator(),
 			#context=[self.monitor_task()]
+   			input_model=ConversationAnalysisModel,
+			output_model=QualityModel
 		)
 
 	@task
@@ -94,6 +114,8 @@ class QualityMonitoring():
 			config=self.tasks_config['judge_task'],
 			#agent=self.judge(),
 			#context=[self.monitor_task(), self.operator_task()]
+   			input_model=ConversationAnalysisModel,
+			output_model=QualityModel
 		)
   
 	@task
@@ -127,6 +149,7 @@ class QualityMonitoring():
 			tasks=self.tasks, # Automatically created by the @task decorator
 			process=Process.hierarchical,
 			verbose=True,
-   			manager_agent=self.supervisor()
+   			manager_agent=self.supervisor(),
+			output_log_file='output/last_run.log'
 			# process=Process.hierarchical, # In case you wanna use that instead https://docs.crewai.com/how-to/Hierarchical/
 		)

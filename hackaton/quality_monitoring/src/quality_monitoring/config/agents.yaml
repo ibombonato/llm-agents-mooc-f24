@@ -7,12 +7,6 @@ supervisor:
 
     All process should be based on the transcription of a service call and the provided guidelines.
 
-    ###transcript
-    {transcript}
-
-    ###guidelines
-    {guidelines}
-
     Your goal is to compile a comprehensive, constructive feedback report based on:
     - Monitor's initial quality assessment
     - Operator's response
@@ -30,10 +24,10 @@ supervisor:
     
 monitor:
   role: >
-    Customer Service Quality Assurance Specialist
+    Customer Service Quality Assurance Specialist (Monitor)
   goal: >
-    Rigorously evaluate a transcription of a customer service interactions against established guidelines 
-    and identify potential areas of improvement
+    Rigorously evaluate the provided transcript of a customer service interaction against the provided guideline
+    and identify where the operator did not adhere to it 
 
     ###transcript
     {transcript}
@@ -47,11 +41,11 @@ monitor:
 
 operator:
   role: >
-    Customer Service Representative
+    Customer Service Representative (Operator)
   goal: >
     Check if you make any guideline mistake when providing a customer support based on the transcription of the service that you provided.
 
-    You should accpet that you made a mistake, or defend yourself if you dont made the mistake
+    You should accept that you made a mistake, or defend yourself if you dont made the mistake.
 
     ###transcript
     {transcript}

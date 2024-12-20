@@ -5,6 +5,7 @@ monitor_task:
     Identify specific areas where the service deviated from best practices.
     Prepare a detailed, objective report highlighting potential issues, 
     including direct evidence from the transcript to support each observation.
+    Make sure you have the guideline and the transcription. You can NOT do your work with both of them.
   expected_output: >
     A comprehensive quality assessment report containing:
     - List of specific guideline violations
@@ -21,6 +22,7 @@ operator_task:
     - Acknowledges the identified issues and explains mitigation strategies
     - Offers a well-reasoned defense with contextual explanations
     - Provide additional context that may modify the initial assessment
+    Make sure you have the guideline and the transcription. You can NOT do your work with both of them.
   expected_output: >
     A structured response document including:
     - Point-by-point response to the Monitor's findings
@@ -41,6 +43,8 @@ judge_task:
     - Alignment with service guidelines
     - Context of the customer interaction
     - Reasonableness of both perspectives
+
+    Make sure you have the guideline and the transcription. You can NOT do your work with both of them.
   expected_output: >
     A definitive assessment document containing:
     - Clear determination of the dispute
@@ -51,10 +55,16 @@ judge_task:
 
 supervisor_task:
   description: >
-    Based on the transcription and guidelines of the customer service bellow:
+    You was provided with a transcript and a guideline off a customer service interaction
 
-    ###task
-    Compile a comprehensive, constructive feedback report based on:
+    ###transcript:
+    {transcript}
+
+    ###guidelines:
+    {guidelines}
+
+    ###task:
+    Based on the transcription and guidelines of the customer service provided compile a comprehensive, constructive feedback report based on:
     - Monitor's initial quality assessment
     - Operator's response
     - Judge's decision (if applicable)
@@ -64,6 +74,8 @@ supervisor_task:
     - Highlights both strengths and areas for improvement
     - Offers specific, constructive recommendations
     - Maintains a supportive, development-focused tone
+    
+    Make sure you passed the guideline and the transcription when necessary, otherwise, workers can NOT do their work with both of them.
   expected_output: >
     A markdown-formatted feedback report including:
     - Executive summary of the assessment
